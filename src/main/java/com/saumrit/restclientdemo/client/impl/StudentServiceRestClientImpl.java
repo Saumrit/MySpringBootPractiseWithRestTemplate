@@ -65,14 +65,17 @@ public class StudentServiceRestClientImpl implements StudentServiceRestClient {
 
     @Override
     public StudentDTO fetchAStudentFromACollegeByRestClient(String collegeName, String studentName) {
-        Map<String,Object> theURIvariables= new HashMap<>();
-        theURIvariables.put("collegeName",collegeName);
+
+        Map<String,Object> theURIVariables= new HashMap<>();
+        theURIVariables.put("collegeName",collegeName);
+
         URI theUri=UriComponentsBuilder.fromUriString(myHttpConfiguration.getStudentServiceForSingleStudentFromCollegeURI())
                 .queryParam("studentName",studentName)
-                .uriVariables(theURIvariables)
+                .uriVariables(theURIVariables)
                 .build().toUri();
+
         ResponseEntity<StudentDTO> theResponse=restClient.get()
-                .uri(theUri.getPath(),theURIvariables)
+                .uri(theUri)
                 .retrieve()
                 .toEntity(StudentDTO.class);
 
