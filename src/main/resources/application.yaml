@@ -1,0 +1,16 @@
+spring:
+  profiles.active: local
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/mySpringBootPractise
+      host: localhost
+      port: 27017
+      database: mySpringBootPractise
+management:
+  endpoints:
+    web:
+      exposure:
+        include: mappings
+springdoc:
+  swagger-ui:
+    path: "/swagger-ui.html"
