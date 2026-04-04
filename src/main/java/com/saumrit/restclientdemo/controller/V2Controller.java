@@ -3,6 +3,7 @@ package com.saumrit.restclientdemo.controller;
 
 import com.saumrit.restclientdemo.dto.client.StudentDTO;
 import com.saumrit.restclientdemo.service.V1Service;
+import com.saumrit.restclientdemo.service.V2Service;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -12,13 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1")
-public class V1Controller {
+@RequestMapping("/v2")
+public class V2Controller {
 
-    public final V1Service v1Service;
+    public final V2Service v2Service;
 
-    public V1Controller(V1Service v1Service) {
-        this.v1Service = v1Service;
+    public V2Controller(V2Service v2Service) {
+        this.v2Service = v2Service;
     }
 
     @GetMapping("/allStudents")
@@ -30,7 +31,7 @@ public class V1Controller {
             @ApiResponse(responseCode = "400",description = "Bad Request"),
             @ApiResponse(responseCode = "500",description = "Internal Server Error") })
     public List<StudentDTO> getAllStudents(){
-        return v1Service.getAllStudents();
+        return v2Service.getAllStudents();
     }
 
     @GetMapping("/studentFromAcollege/{collegeName}")
@@ -42,6 +43,6 @@ public class V1Controller {
             @ApiResponse(responseCode = "400",description = "Bad Request"),
             @ApiResponse(responseCode = "500",description = "Internal Server Error") })
     public StudentDTO getAStudentFromACollege(@PathVariable("collegeName") String collegeName,@RequestParam(name = "theStudentName") String studentName){
-        return v1Service.getSingleStudentFromACollege(collegeName,studentName);
+        return v2Service.getSingleStudentFromACollege(collegeName,studentName);
     }
 }

@@ -7,6 +7,8 @@ import java.util.List;
 public interface StudentServiceRestClient {
 
     List<StudentDTO> fetchAllStudents();
+    List<StudentDTO> fetchAllStudentsByRestClient();
 
     StudentDTO fetchAStudentFromACollege(String collegeName, String studentName);
+    StudentDTO fetchAStudentFromACollegeByRestClient(String collegeName, String studentName);
 }

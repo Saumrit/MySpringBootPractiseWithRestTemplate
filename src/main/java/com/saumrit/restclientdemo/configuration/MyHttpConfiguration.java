@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.client.RestClient;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
@@ -22,6 +24,13 @@ public class MyHttpConfiguration {
     public RestTemplate getTheRestTemplate(){
         return new RestTemplate();
     }
+
+    @Bean
+    public RestClient getTheRestClient(){
+        return RestClient.create();
+    }
+
+
 
 
 }
