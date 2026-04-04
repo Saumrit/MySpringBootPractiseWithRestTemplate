@@ -8,9 +8,13 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class StudentServiceRestClientImpl implements StudentServiceRestClient {
@@ -30,6 +34,21 @@ public class StudentServiceRestClientImpl implements StudentServiceRestClient {
                 null,
                 new ParameterizedTypeReference<List<StudentDTO>>() {})
                 ;
+        return theResponse.getBody();
+    }
+
+    @Override
+    public StudentDTO fetchAStudentFromACollege(String collegeName, String studentName) {
+        Map<String,Object> theURIvariables= new HashMap<>();
+        theURIvariables.put("collegeName",collegeName);
+
+        URI theUri=UriComponentsBuilder.fromUriString(myHttpConfiguration.getStudentServiceForSingleStudentFromCollegeURI())
+                .queryParam("studentName",studentName)
+                .uriVariables(theURIvariables)
+                .build().toUri();
+
+        ResponseEntity<StudentDTO> theResponse= restTemplate.getForEntity(theUri,StudentDTO.class);
+
         return theResponse.getBody();
     }
 }

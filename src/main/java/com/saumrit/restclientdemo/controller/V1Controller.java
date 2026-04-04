@@ -7,9 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +20,6 @@ public class V1Controller {
         this.v1Service = v1Service;
     }
 
-
     @GetMapping("/allStudents")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Api to get All Students",
@@ -33,5 +30,17 @@ public class V1Controller {
             @ApiResponse(responseCode = "500",description = "Internal Server Error") })
     public List<StudentDTO> getAllStudents(){
         return v1Service.getAllStudents();
+    }
+
+    @GetMapping("/studentFromAcollege/{collegeName}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Api to get A student from college",
+            description = "Api to get A single student from that colleges")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Success"),
+            @ApiResponse(responseCode = "400",description = "Bad Request"),
+            @ApiResponse(responseCode = "500",description = "Internal Server Error") })
+    public StudentDTO getAStudentFromACollege(@PathVariable("collegeName") String collegeName,@RequestParam(name = "theStudentName") String studentName){
+        return v1Service.getSingleStudentFromACollege(collegeName,studentName);
     }
 }

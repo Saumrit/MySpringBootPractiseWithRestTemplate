@@ -18,4 +18,8 @@ public class V1Service {
     public List<StudentDTO> getAllStudents(){
         return studentServiceRestClient.fetchAllStudents();
     }
+
+    public StudentDTO getSingleStudentFromACollege(String collegeName, String studentName){
+        return studentServiceRestClient.fetchAStudentFromACollege(collegeName,studentName);
+    }
 }
