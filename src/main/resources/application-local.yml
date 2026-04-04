@@ -18,3 +18,7 @@ mydatabase:
   host: localhost
   port: 27017
   database: mySpringBootPractise
+
+studentService:
+  getAllStudents:
+    uri: http://localhost:8080/v2/students/getAllStudents
