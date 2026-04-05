@@ -22,4 +22,8 @@ public class V2Service {
     public StudentDTO getSingleStudentFromACollege(String collegeName, String studentName){
         return studentServiceRestClient.fetchAStudentFromACollege(collegeName,studentName);
     }
+
+    public Integer addAStudent(StudentDTO studentDTO){
+        return studentServiceRestClient.addASingleStudentByRestClient(studentDTO);
+    }
 }

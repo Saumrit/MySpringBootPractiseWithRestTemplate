@@ -24,3 +24,5 @@ studentService:
     uri: http://localhost:8080/v2/students/getAllStudents
   getSingleStudentOnly:
     uri: http://localhost:8080/v1/students/{collegeName}/student
+  addSingleStudent:
+    uri: http://localhost:8080/v1/students/addSingleStudent

@@ -45,4 +45,16 @@ public class V2Controller {
     public StudentDTO getAStudentFromACollege(@PathVariable("collegeName") String collegeName,@RequestParam(name = "theStudentName") String studentName){
         return v2Service.getSingleStudentFromACollege(collegeName,studentName);
     }
+
+    @PostMapping("/student")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Api to add A student ",
+            description = "Api to add A single student ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200",description = "Success"),
+            @ApiResponse(responseCode = "400",description = "Bad Request"),
+            @ApiResponse(responseCode = "500",description = "Internal Server Error") })
+    public Integer addAStudent(@RequestBody StudentDTO studentDTO){
+        return v2Service.addAStudent(studentDTO);
+    }
 }

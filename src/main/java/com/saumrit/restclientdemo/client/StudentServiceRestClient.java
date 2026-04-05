@@ -11,4 +11,7 @@ public interface StudentServiceRestClient {
 
     StudentDTO fetchAStudentFromACollege(String collegeName, String studentName);
     StudentDTO fetchAStudentFromACollegeByRestClient(String collegeName, String studentName);
+
+    Integer addASingleStudent(StudentDTO studentDTO);
+    Integer addASingleStudentByRestClient(StudentDTO studentDTO);
 }

@@ -20,6 +20,9 @@ public class MyHttpConfiguration {
     @Value("${studentService.getSingleStudentOnly.uri}")
     public String studentServiceForSingleStudentFromCollegeURI;
 
+    @Value("${studentService.addSingleStudent.uri}")
+    public String addSingleStudentURI;
+
     @Bean
     public RestTemplate getTheRestTemplate(){
         return new RestTemplate();
